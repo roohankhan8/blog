@@ -1,5 +1,15 @@
 <?php
 session_start();
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+    $url = "https://";
+} else {
+    $url = "http://";
+    $url .= $_SERVER['HTTP_HOST'];
+    $url .= $_SERVER['REQUEST_URI'];
+    $url;
+}
+$page = $url;
+$sec = '1';
 
 $server = "localhost";
 $username = "root";
@@ -38,23 +48,31 @@ if (isset($_POST['signup'])) {
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-    $check_user = "SELECT * FROM php.users WHERE email='$email'";
-    $result = $con->query($check_user);
-
-    if ($result->num_rows > 0) {
-        $_SESSION['error'] = true;
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    
+    if ($password != $confirm_password) {
+        $_SESSION['error'] = 'Passwords do not match!';
         header("Location: signup.php");
         exit();
     } else {
-        $_SESSION['success'] = true;
-        $sql = "INSERT INTO `php`.`users` (`first_name`, `last_name`, `email`, `password`) VALUES ('$first_name', '$last_name', '$email', '$password');";
-        if ($con->query($sql) === TRUE) {
-            header("Location: login.php");
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $confirm_password = password_hash($_POST['confirm_password'], PASSWORD_DEFAULT);    
+        $check_user = "SELECT * FROM php.users WHERE email='$email'";
+        $result = $con->query($check_user);
+        if ($result->num_rows > 0) {
+            $_SESSION['error'] = 'Email is already taken!';
+            header("Location: signup.php");
             exit();
         } else {
-            echo "Error: " . $sql . "<br>" . $con->error;
+            $_SESSION['success'] = 'Account created successfully!';
+            $sql = "INSERT INTO `php`.`users` (`first_name`, `last_name`, `email`, `password`) VALUES ('$first_name', '$last_name', '$email', '$password');";
+            if ($con->query($sql) === TRUE) {
+                header("Location: login.php");
+                exit();
+            } else {
+                echo "Error: " . $sql . "<br>" . $con->error;
+            }
         }
     }
 }
