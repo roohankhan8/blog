@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login and Signup</title>
-    <link rel="stylesheet" href="registration.css" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="../styles/registration.css" />
 </head>
 
 <body>
@@ -18,6 +18,15 @@
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Sign Up" name="signup">
         </form>
+        <?php
+        session_start();
+        if (isset($_SESSION['error'])) {
+            echo "
+            <p class='or' style='color:red;'>Email is already taken!</p>
+            ";
+            unset($_SESSION['error']);
+        }
+        ?>
         <div class="separator"><span>OR</span></div>
         <p class="or">Already have an account? <a href="login.php">Login</a></p>
     </div>

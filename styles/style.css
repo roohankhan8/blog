@@ -1,0 +1,53 @@
+.cards {
+  display: flex;
+  justify-content: space-around;
+  padding: 2em 0 2em 0;
+}
+.card {
+  margin: 1em;
+}
+#pc-login-btn,
+#pc-logout-btn {
+  margin-left: .5rem;
+}
+#mob-login-btn,
+#mob-logout-btn {
+  display: none;
+}
+/* Styles for mobiles */
+@media (max-width: 600px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2em;
+  }
+  #pc-login-btn,
+  #pc-logout-btn {
+    display: none;
+  }
+  #mob-login-btn,
+  #mob-logout-btn {
+    display: block;
+  }
+}
+
+/* Styles for tablets & ipads */
+@media (min-width: 601px) and (max-width: 991px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2em;
+  }
+  #pc-login-btn,
+  #pc-logout-btn {
+    display: none;
+  }
+  #mob-login-btn,
+  #mob-logout-btn {
+    display: block;
+  }
+}
