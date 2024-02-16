@@ -47,31 +47,39 @@ if (isset($_POST['login'])) {
 if (isset($_POST['signup'])) {
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
-    
+
     if ($password != $confirm_password) {
         $_SESSION['error'] = 'Passwords do not match!';
         header("Location: signup.php");
         exit();
     } else {
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $confirm_password = password_hash($_POST['confirm_password'], PASSWORD_DEFAULT);    
-        $check_user = "SELECT * FROM php.users WHERE email='$email'";
-        $result = $con->query($check_user);
-        if ($result->num_rows > 0) {
-            $_SESSION['error'] = 'Email is already taken!';
+        $check_email = "SELECT * FROM php.users WHERE email='$email'";
+        $check_username = "SELECT * FROM php.users WHERE username='$username'";
+        $email_exist = $con->query($check_email);
+        $username_exist = $con->query($check_username);
+        if ($username_exist->num_rows > 0) {
+            $_SESSION['error'] = 'Username is already taken!';
             header("Location: signup.php");
             exit();
         } else {
-            $_SESSION['success'] = 'Account created successfully!';
-            $sql = "INSERT INTO `php`.`users` (`first_name`, `last_name`, `email`, `password`) VALUES ('$first_name', '$last_name', '$email', '$password');";
-            if ($con->query($sql) === TRUE) {
-                header("Location: login.php");
+            if ($email_exist->num_rows > 0) {
+                $_SESSION['error'] = 'Email is already taken!';
+                header("Location: signup.php");
                 exit();
             } else {
-                echo "Error: " . $sql . "<br>" . $con->error;
+                $_SESSION['success'] = 'Account created successfully!';
+                $sql = "INSERT INTO `php`.`users` (`first_name`, `last_name`, `username`, `email`, `password`) VALUES ('$first_name', '$last_name', '$username', '$email', '$password');";
+                if ($con->query($sql) === TRUE) {
+                    header("Location: login.php");
+                    exit();
+                } else {
+                    echo "Error: " . $sql . "<br>" . $con->error;
+                }
             }
         }
     }

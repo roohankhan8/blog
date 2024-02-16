@@ -6,16 +6,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link 
-                    <?php
-                    $currentURL = $_SERVER['REQUEST_URI'];
-                    if (!str_contains($currentURL, 'profile.php') && !str_contains($currentURL, 'create.php')) {
-                        echo 'active';
-                    }
-                    ?>
-                    " aria-current="page" href="index.php">Home</a>
-                </li>
                 <?php
                 if (isset($_SESSION['user'])) {
                     echo '<li class="nav-item"><a class="nav-link ';
@@ -23,7 +13,7 @@
                         echo 'active';
                     }
                     echo '
-                    " href="profile.php">Profile</a></li>
+                    " href="profile.php?username='. $_SESSION['user']['username'] .'">Profile</a></li>
                     <li class="nav-item mb-2" id="mob-logout-btn">
                         <a href="create.php" class="btn btn-primary text-center">
                             Create Blog
@@ -51,7 +41,7 @@
             if (isset($_SESSION['user'])) {
                 echo '
                     <div class="nav-item" id="pc-logout-btn">
-                        <a href="create.php" class="btn btn-primary text-center">
+                        <a href="create.php" class="btn btn-success text-center">
                             Create Blog
                         </a>
                     </div>

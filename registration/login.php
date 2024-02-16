@@ -20,7 +20,7 @@ if (isset($_SESSION['success'])) {
 }
 ?>
 <div class="separator"><span>OR</span></div>
-<p class="or">Don't have an account?</p>
+<p class="or">If you do not have an account</p>
 
 <div class="separator"><span><a href="signup.php">Sign up</a></span></div>
 </div>

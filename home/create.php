@@ -1,10 +1,10 @@
 <?php include 'header.php'; ?>
 <?php
 if (isset($_POST['create_blog'])) {
-    $email = $_SESSION['user']['email'];
+    $username = $_SESSION['user']['username'];
     $title = $_POST['title'];
     $content = $_POST['content'];
-    $sql = "INSERT INTO `php`.`blogs` (`email`, `title`, `content`) VALUES ('$email', '$title', '$content');";
+    $sql = "INSERT INTO `php`.`blogs` (`username`, `title`, `content`) VALUES ('$username', '$title', '$content');";
     if ($con->query($sql) === TRUE) {
         header("Location: index.php");
         exit();

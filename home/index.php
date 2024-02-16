@@ -21,8 +21,8 @@ $result = $con->query($sql);
                         <p>' . $row['content'] . '</p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <span><small>By: ' . $row['email'] . '</small></span>
-                        <a href="blog.php/' . $row['sno'] . '" class="btn btn-primary">Continue</a>
+                        <span><small>By: ' . $row['username'] . '</small></span>
+                        <a href="blog.php?id=' . $row['sno'] . '" class="btn btn-primary">Continue</a>
                     </div>
                 </div>
             </div>

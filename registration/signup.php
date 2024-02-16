@@ -21,6 +21,7 @@ if (isset($_SESSION['error'])) {
 <form action="registration.php" method="post">
     <input type="text" name="first_name" placeholder="First Name" required>
     <input type="text" name="last_name" placeholder="Last Name" required>
+    <input type="text" name="username" placeholder="Username" required>
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" onkeyup="validatePassword(this.value)" id="pwd1" placeholder="Password" required><br>
     <input type="password" name="confirm_password" placeholder="Confirm Password" required>

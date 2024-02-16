@@ -8,7 +8,7 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     $url;
 }
 $page = $url;
-$sec = '30';
+$sec = '300';
 ?>
 
 <!DOCTYPE html>
