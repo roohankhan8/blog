@@ -9,7 +9,7 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     $url;
 }
 $page = $url;
-$sec = '105';
+$sec = '50';
 
 $server = "localhost";
 $username = "root";

@@ -1,5 +1,10 @@
+.cards a{
+  text-decoration: none;
+  /* color:inherit; */
+}
 .cards {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   padding: 2em 0 2em 0;
 }
@@ -8,12 +13,23 @@
 }
 #pc-login-btn,
 #pc-logout-btn {
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 #mob-login-btn,
 #mob-logout-btn {
   display: none;
 }
+#content-box {
+  max-height: 10em;
+  overflow: hidden;
+  margin: 1rem 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+}
+#content-box > p{
+  margin: 0;
+  padding: 0;
+}
+
 /* Styles for mobiles */
 @media (max-width: 600px) {
   .cards {

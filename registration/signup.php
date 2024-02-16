@@ -1,7 +1,7 @@
 <?php include 'header.php'; ?>
 <style>
     .success {
-        color: blue;
+        color: green;
     }
 
     .error {
@@ -24,7 +24,7 @@ if (isset($_SESSION['error'])) {
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" onkeyup="validatePassword(this.value)" id="pwd1" placeholder="Password" required><br>
     <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-    <input disabled=valid type="submit" value="Sign Up" name="signup">
+    <input id="signUpBtn" disabled type="submit" value="Sign Up" name="signup">
 </form>
 <small>
     <ul class=''>
@@ -39,45 +39,45 @@ if (isset($_SESSION['error'])) {
 <div class="separator"><span><a href="login.php">Login</a></span></div>
 </div>
 <script>
-    valid = false
+    x = 0
+    signUpBtn = document.getElementById('signUpBtn')
 
     function validatePassword(input) {
         if (input.length > 7) {
             document.getElementById("req-1").classList.remove('error')
             document.getElementById("req-1").classList.add('success')
-            valid = true
+            x += 1
         } else {
             document.getElementById("req-1").classList.remove('success')
             document.getElementById("req-1").classList.add('error')
-            valid = false
         }
         if (/[a-z]/.test(input) && /[A-Z]/.test(input)) {
             document.getElementById("req-2").classList.remove('error')
             document.getElementById("req-2").classList.add('success')
-            valid = true
+            x += 1
         } else {
             document.getElementById("req-2").classList.remove('success')
             document.getElementById("req-2").classList.add('error')
-            valid = false
         }
-
         if (/[0-9]/.test(input)) {
             document.getElementById("req-3").classList.remove('error')
             document.getElementById("req-3").classList.add('success')
-            valid = true
+            x += 1
         } else {
             document.getElementById("req-3").classList.remove('success')
             document.getElementById("req-3").classList.add('error')
-            valid = false
         }
         if (/[./@#$%^&*]/.test(input)) {
             document.getElementById("req-4").classList.remove('error')
             document.getElementById("req-4").classList.add('success')
-            valid = true
+            x += 1
         } else {
             document.getElementById("req-4").classList.remove('success')
             document.getElementById("req-4").classList.add('error')
-            valid = false
+        }
+        console.log(x)
+        if (x == 4) {
+            signUpBtn.disabled = false;
         }
     }
 </script>

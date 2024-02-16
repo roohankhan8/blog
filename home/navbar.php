@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Blogs</a>
+        <a class="navbar-brand" href="index.php">Blogs</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,6 +24,11 @@
                     }
                     echo '
                     " href="profile.php">Profile</a></li>
+                    <li class="nav-item mb-2" id="mob-logout-btn">
+                        <a href="create.php" class="btn btn-primary text-center">
+                            Create Blog
+                        </a>
+                    </li>
                     <li class="nav-item" id="mob-logout-btn">
                         <form action="../registration/registration.php" method="get">
                             <input class="btn btn-danger" type="submit" value="Logout" name="logout" />
@@ -45,6 +50,11 @@
             <?php
             if (isset($_SESSION['user'])) {
                 echo '
+                    <div class="nav-item" id="pc-logout-btn">
+                        <a href="create.php" class="btn btn-primary text-center">
+                            Create Blog
+                        </a>
+                    </div>
                     <div class="nav-item" id="pc-logout-btn">
                         <form action="../registration/registration.php" method="get">
                             <input class="btn btn-danger" type="submit" value="Logout" name="logout" />
