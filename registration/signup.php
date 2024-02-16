@@ -1,12 +1,5 @@
 <?php include 'header.php'; ?>
 <style>
-    .success {
-        color: green;
-    }
-
-    .error {
-        color: red;
-    }
 </style>
 <?php
 session_start();
@@ -17,7 +10,7 @@ if (isset($_SESSION['error'])) {
     unset($_SESSION['error']);
 }
 ?>
-<h2>Sign Up</h2>
+<h4>Sign Up</h4>
 <form action="registration.php" method="post">
     <input type="text" name="first_name" placeholder="First Name" required>
     <input type="text" name="last_name" placeholder="Last Name" required>
@@ -25,7 +18,7 @@ if (isset($_SESSION['error'])) {
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" onkeyup="validatePassword(this.value)" id="pwd1" placeholder="Password" required><br>
     <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-    <input id="signUpBtn" disabled type="submit" value="Sign Up" name="signup">
+    <input type="submit" name="signup" id="signUpBtn" value="Sign Up" disabled>
 </form>
 <small>
     <ul class=''>
@@ -42,41 +35,44 @@ if (isset($_SESSION['error'])) {
 <script>
     x = 0
     signUpBtn = document.getElementById('signUpBtn')
+    req_1=document.getElementById("req-1")
+    req_2=document.getElementById("req-2")
+    req_3=document.getElementById("req-3")
+    req_4=document.getElementById("req-4")
 
     function validatePassword(input) {
         if (input.length > 7) {
-            document.getElementById("req-1").classList.remove('error')
-            document.getElementById("req-1").classList.add('success')
+            req_1.classList.remove('error')
+            req_1.classList.add('success')
             x += 1
         } else {
-            document.getElementById("req-1").classList.remove('success')
-            document.getElementById("req-1").classList.add('error')
+            req_1.classList.remove('success')
+            req_1.classList.add('error')
         }
         if (/[a-z]/.test(input) && /[A-Z]/.test(input)) {
-            document.getElementById("req-2").classList.remove('error')
-            document.getElementById("req-2").classList.add('success')
+            req_2.classList.remove('error')
+            req_2.classList.add('success')
             x += 1
         } else {
-            document.getElementById("req-2").classList.remove('success')
-            document.getElementById("req-2").classList.add('error')
+            req_2.classList.remove('success')
+            req_2.classList.add('error')
         }
         if (/[0-9]/.test(input)) {
-            document.getElementById("req-3").classList.remove('error')
-            document.getElementById("req-3").classList.add('success')
+            req_3.classList.remove('error')
+            req_3.classList.add('success')
             x += 1
         } else {
-            document.getElementById("req-3").classList.remove('success')
-            document.getElementById("req-3").classList.add('error')
+            req_3.classList.remove('success')
+            req_3.classList.add('error')
         }
         if (/[./@#$%^&*]/.test(input)) {
-            document.getElementById("req-4").classList.remove('error')
-            document.getElementById("req-4").classList.add('success')
+            req_4.classList.remove('error')
+            req_4.classList.add('success')
             x += 1
         } else {
-            document.getElementById("req-4").classList.remove('success')
-            document.getElementById("req-4").classList.add('error')
+            req_4.classList.remove('success')
+            req_4.classList.add('error')
         }
-        console.log(x)
         if (x == 4) {
             signUpBtn.disabled = false;
         }

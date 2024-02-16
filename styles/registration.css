@@ -13,10 +13,10 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 1rem 1rem;
 }
-h2 {
+h4 {
   text-align: center;
 }
-a{
+a {
   text-decoration: none;
 }
 input[type="text"],
@@ -31,13 +31,14 @@ input[type="submit"] {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
 input[type="submit"] {
-  background-color: #4caf50;
+  background-color: #45a049;
   color: white;
   cursor: pointer;
 }
 input[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #45a058;
 }
 .separator {
   text-align: center;
@@ -55,4 +56,19 @@ input[type="submit"]:hover {
   width: fit-content;
   margin: 0 auto;
   padding: 0 5px;
+}
+
+.success {
+  color: #45a049;
+}
+
+.error {
+  color: red;
+}
+.disabled {
+  background-color: gray;
+  color: white;
+  cursor: pointer;
+}
+.enabled {
 }

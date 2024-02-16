@@ -1,5 +1,5 @@
 <?php include 'header.php'; ?>
-<h2>Login</h2>
+<h4>Login</h4>
 <form action="registration.php" method="post">
   <input type="email" name="email" placeholder="Email" required />
   <input type="password" name="password" placeholder="Password" required />
